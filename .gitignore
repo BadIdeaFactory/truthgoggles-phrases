@@ -1,0 +1,10 @@
+output/
+*.pyc
+*.py~
+*.out
+*.log
+auxdata/
+*.sql~
+dbfiles/
+.cache
+*.egg-info
