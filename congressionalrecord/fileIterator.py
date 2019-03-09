@@ -25,7 +25,7 @@ def main():
                     'the', "'s", 'c', 'a', 'also', '===============', '..', 'mr.', 'i', 'roll call',
                     'madam speaker', "public law", "section", "act", "sec", "secretary state", "made available",
                     "united states", "mr speaker", "remain available", "funds appropriated", "call roll", "new york",
-                    "my time", "yield", "bill", "subsection", "sec", "act"]
+                    "my time", "yield", "bill", "subsection", "sec", "act", "usc", "et", "seq"]
     stopWords.update(newStopWords)
 
     legislators = createLegislatorsDict()
@@ -99,7 +99,7 @@ def main():
                 pass
             else:
                 peopleNotIn += 1
-                #print(speakerArr[0] + "      " + speakerArr[1] + "     " + str(year))
+                print(speakerArr[0] + "      " + speakerArr[1] + "     " + str(year))
                 #print(speech + "\n\n")
 
         numberOfSpeechesBoolean = True
@@ -145,14 +145,14 @@ def main():
                 w = wo[0]
                 if (hasNumbers(w)):
                     continue
-                if wo[1] == 'democrat':
-                    if not w in wordCount:
-                        wordCount[w] = 0
-                    wordCount[w] = wordCount[w] + 1
-                elif wo[1] == 'republican':
+                if wo[1] == 'republican':
                     if not w in wordCount:
                         wordCount[w] = 0
                     wordCount[w] = wordCount[w] - 1
+                elif wo[1] == 'democrat':
+                    if not w in wordCount:
+                        wordCount[w] = 0
+                    wordCount[w] = wordCount[w] + 1
                 #print(" ".join(speechWords))
             #TODO: Work on finishing this stemming
 
@@ -194,13 +194,10 @@ def findEChamber(fname):
     cleanedContents = cleanForSpeeches(contents)
     if len(cleanedContents) == 0:
         return "not found"
-    numberOfLineBreaks = 0
-    while numberOfLineBreaks < 18:
-        contents = contents[1:]
-        contents = contents[contents[1:].find("\n"):]
-        numberOfLineBreaks += 1
-    house = (contents[1:contents[2:].find("\n")+2]).split(" ")[-1].lower()
-    if house == "representatives":
+    contents = contents[contents.find("in the"):]
+    contents = contents[:contents.find("\n")]
+    house = contents.split(" ")[-1]
+    if house[:3] == "rep":
         return "rep"
     else:
         return "sen"

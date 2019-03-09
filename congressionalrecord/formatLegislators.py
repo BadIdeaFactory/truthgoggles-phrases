@@ -58,6 +58,8 @@ def main(oldFile, newFile):
                     print('\n\n')
                 else:
                     newData[str(ny)][keyName + ";" + house] = politician
+                    polState = (stateAbbreviations[politician['termsArr'][0]['state']]).lower()
+                    newData[str(ny)][keyName + " of " + polState + ";" + house] = politician
         elif endYear in yearRange or endYear > 2019:
             rangeStart = max(startYear, 2005)
             rangeEnd = min(endYear, 2020)

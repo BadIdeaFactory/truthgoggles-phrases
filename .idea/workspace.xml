@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/legislator.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/legislator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/congressionalrecord/writer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/writer.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="174" column="8" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="8" />
+            <state relative-caret-position="229">
+              <caret line="329" lean-forward="true" selection-start-line="329" selection-end-line="329" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -27,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+            <state relative-caret-position="239">
+              <caret line="61" column="69" lean-forward="true" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -73,6 +75,8 @@
       <find>print</find>
       <find>findchamber</find>
       <find>findechamber</find>
+      <find>&quot;of</find>
+      <find>&quot; of</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,8 +94,8 @@
         <option value="$PROJECT_DIR$/congressionalrecord/spotifyDataCleaner.py" />
         <option value="$USER_HOME$/Documents/dataScienceClubApp/spotifyDataCleaner.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/politician.py" />
-        <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/fileIterator.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
       </list>
     </option>
   </component>
@@ -265,22 +269,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+        <state relative-caret-position="229">
+          <caret line="329" lean-forward="true" selection-start-line="329" selection-end-line="329" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="174" column="8" selection-start-line="174" selection-start-column="8" selection-end-line="174" selection-end-column="8" />
+        <state relative-caret-position="239">
+          <caret line="61" column="69" lean-forward="true" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
