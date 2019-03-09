@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/legislator.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/legislator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/congressionalrecord/politician.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/politician.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="290" column="7" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
+            <state relative-caret-position="391">
+              <caret line="157" column="50" selection-start-line="157" selection-start-column="50" selection-end-line="157" selection-end-column="50" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+            <state relative-caret-position="187">
+              <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -66,10 +67,11 @@
       <find>writer</find>
       <find>no_con</find>
       <find>ret</find>
-      <find>print</find>
       <find>politician</find>
       <find>parsePol</find>
       <find>parse</find>
+      <find>create</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,7 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="y" value="42" />
     <option name="width" value="1830" />
@@ -106,22 +108,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="congressional-record" type="b2602c69:ProjectViewProjectNode" />
-              <item name="congressional-record" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/dataScienceClubApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -182,10 +174,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20190778" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1891892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -274,8 +266,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+        <state relative-caret-position="187">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -284,8 +276,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="290" column="7" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
+        <state relative-caret-position="391">
+          <caret line="157" column="50" selection-start-line="157" selection-start-column="50" selection-end-line="157" selection-end-column="50" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>

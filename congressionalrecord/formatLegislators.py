@@ -36,34 +36,40 @@ def main(oldFile, newFile):
                 continue
         politician = {}
         politician['name'] = oldData[i]['name']
-        politician['terms'] = oldData[i]['terms']
+        politician['termsArr'] = oldData[i]['terms']
 
         if startYear in yearRange:
             rangeEnd = min(2020, endYear)
             for ny in range(startYear, rangeEnd):
-                house = findChamber(politician['terms'], ny)
-                if (keyName, house) in newData[str(ny)]:
-                    oldPolitician = newData[str(ny)][(keyName, house)]
-                    oldPolState = (stateAbbreviations[oldPolitician['terms'][0]['state']]).lower()
-                    newPolState = (stateAbbreviations[politician['terms'][0]['state']]).lower()
+                yearTerm = findTerm(politician['termsArr'], ny)
+                house = yearTerm['type']
+                politician['terms'] = yearTerm
+                if keyName + ";" + house in newData[str(ny)]:
+                    oldPolitician = newData[str(ny)][keyName + ";" + house]
+                    oldPolState = (stateAbbreviations[oldPolitician['termsArr'][0]['state']]).lower()
+                    newPolState = (stateAbbreviations[politician['termsArr'][0]['state']]).lower()
                     if oldPolState == newPolState:
                         continue
-                    newData[str(ny)][(keyName + " of " + oldPolState, house)] = oldPolitician
-                    newData[str(ny)].pop((keyName, house))
-                    newData[str(ny)][(keyName + " of " + newPolState, house)] = politician
-                    print(keyName + " of " + oldPolState)
-                    print(keyName + " of " + newPolState)
+                    newData[str(ny)][keyName + " of " + oldPolState + ";" + house] = oldPolitician
+                    newData[str(ny)].pop(keyName + ";" + house)
+                    newData[str(ny)][keyName + " of " + newPolState + ";" + house] = politician
+                    print(keyName + " of " + oldPolState + ";" + house + ";" + str(ny))
+                    print(keyName + " of " + newPolState + ";" + house + ";" + str(ny))
                     print('\n\n')
                 else:
-                    newData[str(ny)][(keyName, house)] = politician
+                    newData[str(ny)][keyName + ";" + house] = politician
         elif endYear in yearRange or endYear > 2019:
             rangeStart = max(startYear, 2005)
             rangeEnd = min(endYear, 2020)
             for ny in range(rangeStart, rangeEnd):
-                if (keyName, house) in newData[str(ny)]:
-                    newData[str(ny)][(keyName + " " + name, house)] = politician
+                yearTerm = findTerm(politician["termsArr"], ny)
+                politician['terms'] = yearTerm
+                house = yearTerm['type']
+                temp = keyName + ";" + house
+                if temp in newData[str(ny)]:
+                    newData[str(ny)][keyName + " " + name + ";" + house] = politician
                 else:
-                    newData[str(ny)][(keyName, house)] = politician
+                    newData[str(ny)][keyName + ";" + house] = politician
 
 
     json.dump(newData, writer)
@@ -85,13 +91,14 @@ def stripForLetters(phrase):
             word += ch.lower()
     return word
 
-def findChamber(terms, year):
+def findTerm(terms, year):
     for term in terms:
         yearStart = int(term['start'][:4])
-        yearEnd = int(term['end'][:4])-1
-        if year in range(yearStart, yearEnd)
-            return term['type']
+        yearEnd = int(term['end'][:4])
+        if year in range(yearStart, yearEnd):
+            return term
+    return {'type': "junk answer"}
 
 
-#main("legislators-historical.json", "historicalLegislators.json")
+main("legislators-historical.json", "historicalLegislators.json")
 main("legislators-current.json", "currentLegislators.json")

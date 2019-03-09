@@ -10,7 +10,7 @@ from nltk.corpus import stopwords
 import heapq
 
 def main():
-    rootdir = 'C:/Users/pouya\python-projects\congressional-record\congressionalrecord\output'
+    rootdir = 'C:/Users/pouya\python-projects\\truth-goggles-phrases\congressionalrecord\output'
     writer = open("writer.txt", 'w')
     writer.close()
     dirtyWriter = open("dirtyWriter.txt", 'w')
@@ -24,14 +24,15 @@ def main():
     newStopWords = [',', '...', 'congress', '', 'b', '.', '--', ':', ';', '$', '``', ')', '(', "''", 'year',
                     'the', "'s", 'c', 'a', 'also', '===============', '..', 'mr.', 'i', 'roll call',
                     'madam speaker', "public law", "section", "act", "sec", "secretary state", "made available",
-                    "united states", "mr speaker", "remain available", "funds appropriated", "call roll"]
+                    "united states", "mr speaker", "remain available", "funds appropriated", "call roll", "new york",
+                    "my time", "yield", "bill", "subsection", "sec", "act"]
     stopWords.update(newStopWords)
 
     legislators = createLegislatorsDict()
-
     writer = open("legislator.json", 'w')
     json.dump(legislators, writer)
     writer.close()
+    peopleNotIn = 0
 
     for subdir, dirs, files in os.walk(rootdir):
         for file in files:
@@ -59,16 +60,17 @@ def main():
                 for r in contentList:
                     nameEnd = findNth(r, ".", 2)
                     name = r[0:nameEnd].lower()
-                    if name not in speakerDict:
-                        speakerDict[(name, chamber)] = list()
-                    speakerDict[(name, chamber)].append((year, r[nameEnd:]))
+                    if (name + ";" + chamber) not in speakerDict:
+                        speakerDict[name + ";" + chamber] = list()
+                    speakerDict[name + ";" + chamber].append((year, r[nameEnd:]))
     numberOfSpeeches = 0
     ps = PorterStemmer()
     wordCount = {}
     for speaker in speakerDict:
 
-        speakerName = speaker[0]
-        chamber = speaker[1]
+        speakerArr = speaker.split(";")
+        speakerName = speakerArr[0]
+        chamber = speakerArr[1]
         #print(speaker + ":    " + str(len(speakerDict[speaker])))
         numberOfSpeeches += len(speakerDict[speaker])
         if speaker not in wordStems:
@@ -89,18 +91,26 @@ def main():
                     if not hasNumbers(word):
                         sp += (word + " ")
             sp = sp[:-1]
-            filteredSpeechWords.append(sp)
+            filteredSpeechWords.append((sp, year))
 
-            if (nameToSearch, chamber) in legislators[year]:
-                # print(legislators[year][nameToSearch])
+            if (nameToSearch + ";" + chamber) in legislators[year]:
+                #print(legislators[year][nameToSearch])
                 pass
             else:
-                print(speaker[0] + "      " + speaker[1] + "     " + str(year))
-                print(speech + "\n\n")
+                peopleNotIn += 1
+                #print(speakerArr[0] + "      " + speakerArr[1] + "     " + str(year))
+                #print(speech + "\n\n")
 
-        for speech in filteredSpeechWords:
+        for entry in filteredSpeechWords:
             #if len(speakerDict[speaker]) == 1:
                 #print(speech)
+            speech = entry[0]
+            year = entry[1]
+            speakerDictKey = speaker.split(".")[-1].lower()[1:]
+            try:
+                speakerParty = legislators[year][speakerDictKey]['terms']['party'].lower()
+            except:
+                speakerParty = "not found"
             bigrams = list(nltk.bigrams(speech.split()))
             speechWords = word_tokenize(speech)
             filteredSpeechWords = []
@@ -111,7 +121,7 @@ def main():
                 word = word[:-1]
                 if not hasNumbers(word):
                     if word not in stopWords:
-                        filteredSpeechWords.append(word)
+                        filteredSpeechWords.append((word, speakerParty))
 
             """count = 0
             for phrase in filteredSpeechWords:
@@ -122,29 +132,37 @@ def main():
             wordStems[speaker].append(filteredSpeechWords)
             #print(filteredSpeechWords)
             for wo in filteredSpeechWords:
-                #for wo in num:
-                w = wo
+                w = wo[0]
                 if (hasNumbers(w)):
                     continue
-                if not w in wordCount:
-                    wordCount[w] = 0
-                wordCount[w] = wordCount[w] + 1
-            #print(" ".join(speechWords))
+                if wo[1] == 'democrat':
+                    if not w in wordCount:
+                        wordCount[w] = 0
+                    wordCount[w] = wordCount[w] + 1
+                else:
+                    if not w in wordCount:
+                        wordCount[w] = 0
+                    wordCount[w] = wordCount[w] - 1
+                #print(" ".join(speechWords))
             #TODO: Work on finishing this stemming
 
-    #print(str(numberOfSpeeches) + " speeches over " + str(len(numberOfDays) - 1) + " days")
+    print(str(numberOfSpeeches) + " speeches over " + str(len(numberOfDays) - 1) + " days")
+    print(peopleNotIn)
     printTopWords(wordCount)
 
 def printTopWords(wordCount):
     topWords = []
     for w in wordCount:
-        heapq.heappush(topWords, (-wordCount[w], w))
+        if wordCount[w] < 0:
+            heapq.heappush(topWords, (wordCount[w], w, "republicans"))
+            print("republicans:   " + wordCount[w])
+        else:
+            heapq.heappush(topWords, (-wordCount[w], w, "democrats"))
     counter = 0
     while counter < 100:
         clause = heapq.heappop(topWords)
-        if not hasPhrase(clause):
-            counter+=1
-            #print(clause)
+        counter+=1
+        print(clause)
 
 def findChamber(fname):
     chamberAbb = fname[fname.find("Pg") + 2:][: 1]
@@ -168,7 +186,6 @@ def createLegislatorsDict():
                 historical[year][person + " 2"] = current[year][person]
             else:
                 historical[year][person] = current[year][person]
-
     return historical
 
 
