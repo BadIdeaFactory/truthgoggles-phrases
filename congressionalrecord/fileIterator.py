@@ -50,7 +50,7 @@ def main():
                 contents = ""
                 for line in f:
                     contents += line
-                chamber = findChamber(os.path.join(file))
+                chamber = findChamber(subdir + "\\" +file)
                 f.close()
                 contents = cleanContents(contents)
                 dirtyWriter = open("dirtyWriter.txt", 'a')
@@ -64,6 +64,8 @@ def main():
                         speakerDict[name + ";" + chamber] = list()
                     speakerDict[name + ";" + chamber].append((year, r[nameEnd:]))
     numberOfSpeeches = 0
+    numberOfSpeechesDems = 0
+    numberOfSpeechesGop = 0
     ps = PorterStemmer()
     wordCount = {}
     for speaker in speakerDict:
@@ -72,7 +74,6 @@ def main():
         speakerName = speakerArr[0]
         chamber = speakerArr[1]
         #print(speaker + ":    " + str(len(speakerDict[speaker])))
-        numberOfSpeeches += len(speakerDict[speaker])
         if speaker not in wordStems:
             wordStems[speaker] = list()
         filteredSpeechWords = []
@@ -101,6 +102,7 @@ def main():
                 #print(speakerArr[0] + "      " + speakerArr[1] + "     " + str(year))
                 #print(speech + "\n\n")
 
+        numberOfSpeechesBoolean = True
         for entry in filteredSpeechWords:
             #if len(speakerDict[speaker]) == 1:
                 #print(speech)
@@ -111,6 +113,14 @@ def main():
                 speakerParty = legislators[year][speakerDictKey]['terms']['party'].lower()
             except:
                 speakerParty = "not found"
+
+            if numberOfSpeechesBoolean:
+                if speakerParty == "democrat":
+                    numberOfSpeechesDems += len(speakerDict[speaker])
+                elif speakerParty == "republican":
+                    numberOfSpeechesGop += len(speakerDict[speaker])
+            numberOfSpeechesBoolean = False
+
             bigrams = list(nltk.bigrams(speech.split()))
             speechWords = word_tokenize(speech)
             filteredSpeechWords = []
@@ -139,14 +149,15 @@ def main():
                     if not w in wordCount:
                         wordCount[w] = 0
                     wordCount[w] = wordCount[w] + 1
-                else:
+                elif wo[1] == 'republican':
                     if not w in wordCount:
                         wordCount[w] = 0
                     wordCount[w] = wordCount[w] - 1
                 #print(" ".join(speechWords))
             #TODO: Work on finishing this stemming
 
-    print(str(numberOfSpeeches) + " speeches over " + str(len(numberOfDays) - 1) + " days")
+    print(str(numberOfSpeechesDems) + " speeches from Dems over " + str(len(numberOfDays) - 1) + " days")
+    print(str(numberOfSpeechesGop) + " speeches from GOP over " + str(len(numberOfDays) - 1) + " days")
     print(peopleNotIn)
     printTopWords(wordCount)
 
@@ -155,7 +166,6 @@ def printTopWords(wordCount):
     for w in wordCount:
         if wordCount[w] < 0:
             heapq.heappush(topWords, (wordCount[w], w, "republicans"))
-            print("republicans:   " + wordCount[w])
         else:
             heapq.heappush(topWords, (-wordCount[w], w, "democrats"))
     counter = 0
@@ -169,9 +179,33 @@ def findChamber(fname):
     switcher = {
         "H": "rep",
         "S": "sen",
-        "E": "Unknown"
+        "D": "not found",
+        "E": findEChamber(fname)
     }
     return switcher.get(chamberAbb, "Could Not Find")
+
+def findEChamber(fname):
+    f = open(fname, 'r')
+    contents = ""
+    for line in f:
+        contents += line
+    f.close()
+    contents = cleanContents(contents)
+    cleanedContents = cleanForSpeeches(contents)
+    if len(cleanedContents) == 0:
+        return "not found"
+    numberOfLineBreaks = 0
+    while numberOfLineBreaks < 18:
+        contents = contents[1:]
+        contents = contents[contents[1:].find("\n"):]
+        numberOfLineBreaks += 1
+    house = (contents[1:contents[2:].find("\n")+2]).split(" ")[-1].lower()
+    if house == "representatives":
+        return "rep"
+    else:
+        return "sen"
+
+    #return "Not found"
 
 def createLegislatorsDict():
     f = open("currentLegislators.json", "r")
