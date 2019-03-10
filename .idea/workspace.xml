@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/dirtyWriter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/dirtyWriter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/legislator.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/legislator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/writer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/writer.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,35 +20,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="329" lean-forward="true" selection-start-line="329" selection-end-line="329" />
+            <state relative-caret-position="397">
+              <caret line="38" column="115" selection-start-line="38" selection-start-column="115" selection-end-line="38" selection-end-column="115" />
               <folding>
-                <element signature="e#0#52#0" expanded="true" />
+                <element signature="e#89#98#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/congressionalrecord/cli.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1071">
+              <caret line="70" column="20" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="20" />
+              <folding>
+                <element signature="e#22#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/congressionalrecord/pg_run/pg_cr_bulkwrite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/congressionalrecord/govinfo/downloader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3230">
+              <caret line="195" column="39" selection-start-line="195" selection-start-column="39" selection-end-line="195" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="61" column="69" lean-forward="true" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
+            <state relative-caret-position="365">
+              <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/congressionalrecord/politician.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -77,6 +107,16 @@
       <find>findechamber</find>
       <find>&quot;of</find>
       <find>&quot; of</find>
+      <find>haven</find>
+      <find>numberOfDays</find>
+      <find>wordCount</find>
+      <find>wordCount</find>
+      <find>wordCount</find>
+      <find>filtered</find>
+      <find>numberOfSpeeches</find>
+      <find>hasPhrase</find>
+      <find>cleanForSpe</find>
+      <find>findFirst</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,8 +134,10 @@
         <option value="$PROJECT_DIR$/congressionalrecord/spotifyDataCleaner.py" />
         <option value="$USER_HOME$/Documents/dataScienceClubApp/spotifyDataCleaner.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/politician.py" />
-        <option value="$PROJECT_DIR$/congressionalrecord/fileIterator.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/cli.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/pg_run/pg_cr_bulkwrite.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/fileIterator.py" />
       </list>
     </option>
   </component>
@@ -262,29 +304,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/congressionalrecord/politician.py">
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="1071">
+          <caret line="70" column="20" selection-start-line="70" selection-start-column="15" selection-end-line="70" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/pg_run/pg_cr_bulkwrite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="329" lean-forward="true" selection-start-line="329" selection-end-line="329" />
+        <state relative-caret-position="255">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/govinfo/downloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3230">
+          <caret line="195" column="39" selection-start-line="195" selection-start-column="39" selection-end-line="195" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/politician.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="61" column="69" lean-forward="true" selection-start-line="61" selection-start-column="69" selection-end-line="61" selection-end-column="69" />
+        <state relative-caret-position="365">
+          <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="38" column="115" selection-start-line="38" selection-start-column="115" selection-end-line="38" selection-end-column="115" />
+          <folding>
+            <element signature="e#89#98#0" expanded="true" />
           </folding>
         </state>
       </provider>

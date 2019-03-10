@@ -69,9 +69,18 @@ def main(oldFile, newFile):
                 house = yearTerm['type']
                 temp = keyName + ";" + house
                 if temp in newData[str(ny)]:
-                    newData[str(ny)][keyName + " " + name + ";" + house] = politician
+                    oldPolitician = newData[str(ny)][keyName + ";" + house]
+                    oldPolState = (stateAbbreviations[oldPolitician['termsArr'][0]['state']]).lower()
+                    newPolState = (stateAbbreviations[politician['termsArr'][0]['state']]).lower()
+                    if oldPolState == newPolState:
+                        continue
+                    newData[str(ny)][keyName + " of " + oldPolState + ";" + house] = oldPolitician
+                    newData[str(ny)].pop(keyName + ";" + house)
+                    newData[str(ny)][keyName + " of " + newPolState + ";" + house] = politician
                 else:
                     newData[str(ny)][keyName + ";" + house] = politician
+                    polState = (stateAbbreviations[politician['termsArr'][0]['state']]).lower()
+                    newData[str(ny)][keyName + " of " + polState + ";" + house] = politician
 
 
     json.dump(newData, writer)
