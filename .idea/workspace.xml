@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/currentLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/dirtyWriter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/dirtyWriter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/historicalLegislators.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/legislator.json" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/legislator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/writer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/writer.txt" afterDir="false" />
     </list>
@@ -23,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="38" column="115" selection-start-line="38" selection-start-column="115" selection-end-line="38" selection-end-column="115" />
+            <state relative-caret-position="272">
+              <caret line="235" column="25" lean-forward="true" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
               <folding>
                 <element signature="e#89#98#0" expanded="true" />
               </folding>
@@ -117,6 +113,7 @@
       <find>hasPhrase</find>
       <find>cleanForSpe</find>
       <find>findFirst</find>
+      <find>porterstemmer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -353,8 +350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="38" column="115" selection-start-line="38" selection-start-column="115" selection-end-line="38" selection-end-column="115" />
+        <state relative-caret-position="272">
+          <caret line="235" column="25" lean-forward="true" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
           <folding>
             <element signature="e#89#98#0" expanded="true" />
           </folding>

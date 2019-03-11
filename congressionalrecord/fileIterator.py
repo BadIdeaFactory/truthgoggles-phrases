@@ -20,7 +20,6 @@ def main():
         dirtyWriter.close()
         fullWriter = open("fullWriter.txt", 'w')
         fullWriter.close()
-    speakerDict = {}  # dictionary where key is a speaker and value is an array of all of their speeches
     numberOfDays = 0  # keeps track of the number of days that speeches are given over
     wordStems = {}  # dictionary of all the stemmed words said and the number of times they are said
     stopWords = set(stopwords.words('english'))
@@ -36,7 +35,8 @@ def main():
                     "north carolina", "north dakota", "ohio", "oklahoma", "oregon", "pennsylvania",
                     "rhode island", "south carolina", "south dakota", "tennessee", "texas", "utah",
                     "vermont", "virginia", "washington", "west virginia", "wisconsin", "wyoming", "gentleman",
-                    "would", "north", "south", "may", "time", "house", "republican", "democrats", "president", "ask"]
+                    "would", "north", "south", "may", "time", "house", "republican", "democrats", "president", "ask",
+                    "dont", "thank", "make", "like", "ab", "pro", "pro tempore", "senate"]
     stopWords.update(newStopWords)  # updates stop words to include congressional stop words
     peopleNotIn = 0  # counts how many people that politicians that speak cannot be found in our legislators dictionary
 
@@ -47,6 +47,7 @@ def main():
     writer.close()
 
     # if we want to re-parse/clean the congressional record, this builds the dictionary of speakers and speeches
+    # builds dictionary where key is a speaker and value is an array of all of their speeches
     if recompileWriter:
         speakerDict = buildWriterFile(rootdir)
     # if we don't want to re-clean the congressional record, this builds the dictionary of speakers and speeches
@@ -57,6 +58,7 @@ def main():
     numberOfSpeechesGop = 0  # stores number of speeches given by GOP
     ps = PorterStemmer()  # intiializes stemming object
     nonpartisanWordCounts = {}  # maintains a count of all words said, regardless of party
+    democratWordCounts = {}
 
     # stores a count of every word and bigram said and whether it is used more by republicans or democrats
     wordsWoStopWords = {}
@@ -85,25 +87,56 @@ def main():
                 speakerParty = "not found"
 
             for w in speech.split(" "):
+
+                checkPhrase = True  # boolean that checks to see if we should skip the phrase if it contains a stop word
                 word = ""  # stores each word after removing non-alpha and non-space characters.
                 for ch in w:  # removes non-alpha and non-space characters from words
                     if ch.isalpha() or ch == " ":
                         word += ch.lower()
                 if word not in stopWords:  # filters to remove stop words
-                    if not hasNumbers(word):  # filters to remove numbers and words containing numbers, e.g. legislation
-                        sp += (word + " ")  # adds word to filtered speech
+                    word = word + " "
+                    """wordArr = word.split(" ")
+                    word = ""
+                    for wordToCheck in wordArr:
+                        if wordToCheck not in stopWords:
+                            stemmedWord = ps.stem(w)
+                            word = stemmedWord + " "
+                        else:
+                            word = ""
+                            checkPhrase = False
+
+                    if not checkPhrase:
+                        continue
+                        """
+
+                    if not hasNumbers(word):  # filters to remove numbers and words containing numbers, e.g.
+                        sp += word  # adds word to filtered speech
+
+                        w = word
+                        word = ""
+                        for ch in w:
+                            if ch.isalpha() or ch == " ":
+                                word += ch.lower()
+                        word = word.strip()
+
                         if word not in nonpartisanWordCounts:
                             # adds word to dictionary of non-partisan word counts if not in it
                             nonpartisanWordCounts[word] = 0
 
                         # increases count of word in non-partisan word count dict
                         nonpartisanWordCounts[word] = nonpartisanWordCounts[word] + 1
+
                         if word not in wordsWoStopWords:
                             wordsWoStopWords[word] = 0  # adds word to dictionary of partisan word counts if not in it
+
+                        # adds the word to the dictionary containing a count of words spoken by Democrats
+                        if word not in democratWordCounts:
+                            democratWordCounts[word] = 0
 
                         # increases count if dem said word the word
                         if speakerParty == "democrat":
                             wordsWoStopWords[word] = wordsWoStopWords[word] + 1
+                            democratWordCounts[word] = democratWordCounts[word] - 1
 
                         # decreases count if gop said word the word
                         elif speakerParty == "republican":
@@ -139,7 +172,6 @@ def main():
             numberOfSpeechesBoolean = False
 
             bigrams = list(nltk.bigrams(speech.split()))  # creates a list of all bigrams in the filtered speech
-            speechWords = word_tokenize(speech)  # creates a list of all words in the filtered speech to be stemmed
             for gram in bigrams:
                 word = ""  # stores the bigram as a string
                 skip = False  # if True, should skip the bigram because it contains a stop word
@@ -152,6 +184,12 @@ def main():
                 word = word[:-1]  # gets rid of the space on the end of the bigram string
                 if not hasNumbers(word):  # skips the bigram if it contains a number
                     if word not in stopWords:  # skips the bigram if it is in the stop words
+                        w = word
+                        word = ""
+                        for ch in w:
+                            if ch.isalpha() or ch == " ":
+                                word += ch.lower()
+                        word = word.strip()
 
                         # adds the word to the dictionary containing a count of words with partisan association
                         if word not in wordsWoStopWords:
@@ -161,34 +199,45 @@ def main():
                         if word not in nonpartisanWordCounts:
                             nonpartisanWordCounts[word] = 0
 
+                        # adds the word to the dictionary containing a count of words spoken by Democrats
+                        if word not in democratWordCounts:
+                            democratWordCounts[word] = 0
+
                         # adds 1 to the count of the word without a partisan association
                         nonpartisanWordCounts[word] = nonpartisanWordCounts[word] + 1
 
                         # adds 1 to the count of the word with partisan association
                         if speakerParty == "democrat":
                             wordsWoStopWords[word] = wordsWoStopWords[word] + 1
+                            democratWordCounts[word] = democratWordCounts[word] + 1
                         elif speakerParty == "republican":
                             wordsWoStopWords[word] = wordsWoStopWords[word] - 1
 
-            """count = 0
-            for phrase in wordsWoStopWords:
-                wordArr = phrase.split(" ")
-                for
-                wordsWoStopWords[count] = ps.stem(w)
-                count += 1
-            wordStems[speaker].append(wordsWoStopWords)
-            """
             #TODO: Work on finishing this stemming and rearrange order of bigram computation to pull bigrams of stems
+
+    """
+    democratFrequencies = {}
+    for word in nonpartisanWordCounts:
+        totalMentions = nonpartisanWordCounts[word]
+        democratMentions = democratWordCounts[word]
+        democratFrequencies[word] = democratMentions/totalMentions
+    """
 
     print(str(numberOfSpeechesDems) + " speeches from Dems over " + str(numberOfDays) + " days")
     print(str(numberOfSpeechesGop) + " speeches from GOP over " + str(numberOfDays) + " days")
     print(peopleNotIn)
 
     # prints the words that have the greatest magnitude of difference between times parties said word
-    printTopWords(wordsWoStopWords, 100)
+    printTopWords(wordsWoStopWords, 250)
 
     print("\n\n\n non-partisan word Counts: \n")
-    printTopWords(nonpartisanWordCounts, 100)  # prints the words that are said most regardless of party
+    printTopWords(nonpartisanWordCounts, 250)  # prints the words that are said most regardless of party
+
+    #print("\n\n\n Democrat word Counts: \n")
+    #printTopWords(democratWordCounts, 100)  # prints the words that are said most by Democrats
+
+    #print("\n\n\n Democratic Frequencies: \n")
+    #printTopFrequencies(democratFrequencies, 100)
 
 def parseWriterFile():
     speakerDict = {}
@@ -206,7 +255,7 @@ def buildWriterFile(rootdir):
                 print(date + " in year " + year)
 
                 # GET RID OF THIS FOR FINAL ANALYSIS
-                if int(year) < 2019 or int(month) < 3:
+                if int(year) < 2019:
                     break
 
                 fname = subdir + '\\' + file
@@ -235,6 +284,20 @@ def buildWriterFile(rootdir):
 
     return speakerDict
 
+"""
+def printTopFrequencies(wordCount, howMany):
+    topWords = []  # heap of all of the words
+
+    for w in wordCount:
+        heapq.heappush(topWords, (wordCount[w], w))
+
+    # prints the words that have the greatest magnitude of difference between times parties said word
+    counter = 0
+    while counter < howMany:
+        clause = heapq.heappop(topWords)
+        counter+=1
+        print(clause)
+"""
 
 def printTopWords(wordCount, howMany):
     """
@@ -245,7 +308,7 @@ def printTopWords(wordCount, howMany):
 
     topWords = []  # heap of all of the words
 
-    """initializes the heap with a tuple: (magnitude of difference between times parties said word, 
+    """initializes the heap with a tuple: (magnitude of difference between times parties said word,
     the word, which party said the word more)"""
     for w in wordCount:
         if wordCount[w] < 0:
@@ -511,7 +574,7 @@ def findFirstOcc(array, contents, startBool = False):
     for prefix in array:  # iterates through the values that we want to check for
         temp = contents.find(prefix)  # finds the first occurunce of the prefix in contents
 
-        """reassigns spotToCheck to be the first occurunce of an element of array in contents 
+        """reassigns spotToCheck to be the first occurunce of an element of array in contents
         if it occurs before the previous spotToCheck"""
         if temp >= 0 and temp < spotToCheck:
             if startBool:
@@ -534,9 +597,9 @@ def findNth(haystack, needle, n):
     :return: int for the location of the n-th occurunce of needle in haystack
     """
 
-    start = haystack.find(needle)
+    start = haystack.index(needle)
     while start >= 0 and n > 1:
-        start = haystack.find(needle, start+len(needle))
+        start = haystack.index(needle, start+len(needle))
         n -= 1
     return start
 
