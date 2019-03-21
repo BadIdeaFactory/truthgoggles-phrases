@@ -117,3 +117,9 @@ venv.bak/
 *.htm
 *.pdf
 /congressionalrecord/output/*
+/congressionalrecord/writer.txt
+/congressionalrecord/dirtyWriter.txt
+congressionalrecord/writer.txt
+congressionalrecord/dirtyWriter.txt
+*.json
+*.txt
