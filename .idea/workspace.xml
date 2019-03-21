@@ -1,7 +1,386 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="" />
+    <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/congressionalrecord/legislators-current.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/congressionalrecord/legislators-historical.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD783.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD784.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD786.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD788.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD790.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgD791.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1539-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1539-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1539-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1539-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1540.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1541-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1541.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1542-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1542-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1542.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1543-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1543-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1543.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1544-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1544-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1544-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1544.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1545-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1545-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1545.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1546-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1546-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1546-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1546-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1546.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1547-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1547-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1547.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1548-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1548.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1549.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1550-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1550.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1551-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1551.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1552.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1554.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1555-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1555-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1555.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1556-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1556.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgE1557.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH-FrontMatter.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109-7.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6109.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6110-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6110-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6110-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6110-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6110.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6111.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6112.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6113.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6114.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6115-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6115.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6117-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6117-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6117.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6173-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6173-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6173.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6174.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6175.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176-7.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6176.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6177-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6177-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6177.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6178-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6178-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6178-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6178.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6179-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6179-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6179.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6180-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6180.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6181-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6181-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6181-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6181-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6181.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6182.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6183.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6190.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6196.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6201-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6201-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6201.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6202-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6202-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6202-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6202.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6204-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6204.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6205-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6205.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgH6206.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS-FrontMatter.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-7.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503-8.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8503.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8504-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8504.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8510-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8510.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8536.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8545-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8545.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8546.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8547.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8548-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8548.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-5.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-6.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549-7.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8549.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8550.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8558-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8558.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8559.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8560.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8573.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8574.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8582-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8582.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8583.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8584.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8587-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8587-3.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8587-4.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8587.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8588-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-PgS8588.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/html/CREC-2005-07-20-pt1-Pgnull-2.htm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1539-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1539-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1539-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1539-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1540.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1541-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1541.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1542-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1542-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1542.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1543-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1543-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1543.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1544-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1544-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1544-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1544.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1545-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1545-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1545.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1546-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1546-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1546-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1546-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1546.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1547-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1547-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1547.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1548-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1548.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1549.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1550-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1550.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1551-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1551.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1552.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1554.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1555-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1555-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1555.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1556-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1556.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgE1557.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109-7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6109.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6110-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6110-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6110-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6110-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6110.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6111.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6112.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6113.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6114.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6115-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6115.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6117-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6117-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6117.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6173-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6173-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6173.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6174.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6175.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176-7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6176.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6177-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6177-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6177.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6178-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6178-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6178-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6178.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6179-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6179-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6179.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6180-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6180.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6181-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6181-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6181-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6181-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6181.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6182.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6183.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6190.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6196.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6201-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6201-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6202-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6202-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6202-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6202.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6204-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6204.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6205-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6205.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgH6206.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503-8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8503.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8504-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8504.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8510-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8510.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8536.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8545-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8545.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8546.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8547.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8548-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8548.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549-7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8549.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8550.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8558-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8558.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8559.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8560.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8573.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8574.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8582-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8582.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8583.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8584.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8587-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8587-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8587-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8587.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8588-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/CREC-2005-07-20/json/CREC-2005-07-20-pt1-PgS8588.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +392,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7305">
-              <caret line="237" lean-forward="true" selection-end-line="691" />
+            <state relative-caret-position="161">
+              <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -22,8 +401,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="72" column="28" selection-end-line="115" />
+            <state relative-caret-position="153">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -86,10 +465,10 @@
         <option value="$PROJECT_DIR$/congressionalrecord/spotifyDataCleaner.py" />
         <option value="$USER_HOME$/Documents/dataScienceClubApp/spotifyDataCleaner.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/politician.py" />
-        <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/cli.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/pg_run/pg_cr_bulkwrite.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/fileIterator.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
       </list>
     </option>
   </component>
@@ -107,23 +486,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="truth-goggles-phrases" type="b2602c69:ProjectViewProjectNode" />
-              <item name="truth-goggles-phrases" type="462c0819:PsiDirectoryNode" />
+              <item name="truth-goggles" type="b2602c69:ProjectViewProjectNode" />
+              <item name="truth-goggles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="truth-goggles-phrases" type="b2602c69:ProjectViewProjectNode" />
-              <item name="truth-goggles-phrases" type="462c0819:PsiDirectoryNode" />
+              <item name="truth-goggles" type="b2602c69:ProjectViewProjectNode" />
+              <item name="truth-goggles" type="462c0819:PsiDirectoryNode" />
               <item name="congressionalrecord" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -310,15 +689,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7305">
-          <caret line="237" lean-forward="true" selection-end-line="691" />
+        <state relative-caret-position="161">
+          <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/formatLegislators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="72" column="28" selection-end-line="115" />
+        <state relative-caret-position="153">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

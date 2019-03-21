@@ -113,3 +113,4 @@ def findTerm(terms, year):
 
 main("legislators-historical.json", "historicalLegislators.json")
 main("legislators-current.json", "currentLegislators.json")
+
