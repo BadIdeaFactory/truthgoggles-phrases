@@ -60,11 +60,16 @@ def main():
     numberOfSpeechesDems = 0  # stores number of speeches given by Dems
     numberOfSpeechesGop = 0  # stores number of speeches given by GOP
     ps = PorterStemmer()  # intiializes stemming object
-    nonpartisanWordCounts = {}  # maintains a count of all words said, regardless of party
-    democratWordCounts = {}  # maintains a count of all words said by Demcrats
+    nonpartisanWordCounts = []  # maintains a count of all words said, regardless of party
+    democratWordCounts = []  # maintains a count of all words said by Demcrats
 
     # stores a count of every word and bigram said and whether it is used more by republicans or democrats
     wordsWoStopWords = {}
+    wordCountsList = []
+    for i in range(26):
+        wordsCounts.append({})
+        democratWordCounts.append({})
+        nonPartisanWordCounts.append({})
 
     for speaker in speakerDict:  # iterates through the speakers of all speeches
 
@@ -121,29 +126,30 @@ def main():
                         sp += word  # adds word to filtered speech
 
                         word = word.strip()
+                        placeInArr = ord(word[0]) - ord('a')
 
-                        if word not in nonpartisanWordCounts:
+                        if word not in nonpartisanWordCounts[placeInArr]:
                             # adds word to dictionary of non-partisan word counts if not in it
-                            nonpartisanWordCounts[word] = 0
+                            nonpartisanWordCounts[placeInArr][word] = 0
 
                         # increases count of word in non-partisan word count dict
-                        nonpartisanWordCounts[word] = nonpartisanWordCounts[word] + 1
+                        nonpartisanWordCounts[placeInArr][word] = nonpartisanWordCounts[placeInArr][word] + 1
 
-                        if word not in wordsWoStopWords:
-                            wordsWoStopWords[word] = 0  # adds word to dictionary of partisan word counts if not in it
+                        if word not in wordsWoStopWords[placeInArr]:
+                            wordsWoStopWords[placeInArr][word] = 0  # adds word to dictionary of partisan word counts if not in it
 
                         # adds the word to the dictionary containing a count of words spoken by Democrats
-                        if word not in democratWordCounts:
-                            democratWordCounts[word] = 0
+                        if word not in democratWordCounts[placeInArr]:
+                            democratWordCounts[placeInArr][word] = 0
 
                         # increases count if dem said word the word
                         if speakerParty == "democrat":
-                            wordsWoStopWords[word] = wordsWoStopWords[word] + 1
-                            democratWordCounts[word] = democratWordCounts[word] + 1
+                            wordsWoStopWords[placeInArr][word] = wordsWoStopWords[placeInArr][word] + 1
+                            democratWordCounts[placeInArr][word] = democratWordCounts[placeInArr][word] + 1
 
                         # decreases count if gop said word the word
                         elif speakerParty == "republican":
-                            wordsWoStopWords[word] = wordsWoStopWords[word] - 1
+                            wordsWoStopWords[placeInArr][word] = wordsWoStopWords[placeInArr][word] - 1
 
             sp = sp[:-1]  # removes extra space at end of speech
             filteredSpeechWords.append((sp, year))  # adds speech and year to list of filtered speeches
@@ -175,7 +181,7 @@ def main():
             numberOfSpeechesBoolean = False
 
             bigrams = list(nltk.bigrams(speech.split()))  # creates a list of all bigrams in the filtered speech
-            removeWordThreshold = .8
+            removeWordThreshold = 1/8
             for gram in bigrams:
                 word = ""  # stores the bigram as a string
                 skip = False  # if True, should skip the bigram because it contains a stop word
@@ -188,37 +194,41 @@ def main():
                 word = word[:-1]  # gets rid of the space on the end of the bigram string
                 if not hasNumbers(word):  # skips the bigram if it contains a number
                     if word not in stopWords:  # skips the bigram if it is in the stop words
+                        placeInArr = ord(word[0]) - ord('a')
 
                         # adds the word to the dictionary containing a count of words with partisan association
-                        if word not in wordsWoStopWords:
-                            wordsWoStopWords[word] = 0
+                        if word not in wordsWoStopWords[placeInArr]:
+                            wordsWoStopWords[placeInArr][word] = 0
 
                         # adds the word to the dictionary containing a count of words without partisan association
-                        if word not in nonpartisanWordCounts:
-                            nonpartisanWordCounts[word] = 0
+                        if word not in nonpartisanWordCounts[placeInArr]:
+                            nonpartisanWordCounts[placeInArr][word] = 0
 
                         # adds the word to the dictionary containing a count of words spoken by Democrats
-                        if word not in democratWordCounts:
-                            democratWordCounts[word] = 0
+                        if word not in democratWordCounts[placeInArr]:
+                            democratWordCounts[placeInArr][word] = 0
 
                         # adds 1 to the count of the word without a partisan association
-                        nonpartisanWordCounts[word] = nonpartisanWordCounts[word] + 1
+                        nonpartisanWordCounts[placeInArr][word] = nonpartisanWordCounts[placeInArr][word] + 1
 
                         # adds 1 to the count of the word with partisan association
                         if speakerParty == "democrat":
-                            wordsWoStopWords[word] = wordsWoStopWords[word] + 1
-                            democratWordCounts[word] = democratWordCounts[word] + 1
+                            wordsWoStopWords[placeInArr][word] = wordsWoStopWords[placeInArr][word] + 1
+                            democratWordCounts[placeInArr][word] = democratWordCounts[placeInArr][word] + 1
                         elif speakerParty == "republican":
-                            wordsWoStopWords[word] = wordsWoStopWords[word] - 1
+                            wordsWoStopWords[placeInArr][word] = wordsWoStopWords[placeInArr][word] - 1
 
                         """if p percent of the time that a word occurs is within a bigram, we remove the individual word
                         from our word count dictionaries"""
                         for w in gram:
                             try:
-                                if (nonpartisanWordCounts[word])/(nonpartisanWordCounts[w]) > removeWordThreshold:
-                                    nonpartisanWordCounts.pop(w)
-                                    wordsWoStopWords.pop(w)
-                                    democratWordCounts.pop(w)
+                                bigramMentions = nonpartisanWordCounts[placeInArr][word])
+                                singleWordMentions = nonpartisanWordCounts[placeInArr][w]
+                                frequencyOfWord = bigramMentions/singleWordMentions
+                                if frequencyOfWord > removeWordThreshold:
+                                    nonpartisanWordCounts[placeInArr].pop(w)
+                                    wordsWoStopWords[placeInArr].pop(w)
+                                    democratWordCounts[placeInArr].pop(w)
                             except:
                                 pass
 
