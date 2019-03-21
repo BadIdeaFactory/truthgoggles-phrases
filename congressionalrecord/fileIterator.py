@@ -9,17 +9,18 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import heapq
 
+
 def main():
     rootdir = 'C:/Users/pouya\python-projects\\truth-goggles-phrases\congressionalrecord\output'
     recompileWriter = True
-    if recompileWriter:
+    """if recompileWriter:
         # resets the files to be empty to run our new program
         writer = open("writer.txt", 'w')
         writer.close()
         dirtyWriter = open("dirtyWriter.txt", 'w')
         dirtyWriter.close()
         fullWriter = open("fullWriter.txt", 'w')
-        fullWriter.close()
+        fullWriter.close()"""
     numberOfDays = 0  # keeps track of the number of days that speeches are given over
     wordStems = {}  # dictionary of all the stemmed words said and the number of times they are said
     stopWords = set(stopwords.words('english'))
@@ -36,7 +37,8 @@ def main():
                     "rhode island", "south carolina", "south dakota", "tennessee", "texas", "utah",
                     "vermont", "virginia", "washington", "west virginia", "wisconsin", "wyoming", "gentleman",
                     "would", "north", "south", "may", "time", "house", "republican", "democrats", "president", "ask",
-                    "dont", "thank", "make", "like", "ab", "pro", "pro tempore", "senate"]
+                    "dont", "thank", "make", "like", "ab", "pro", "pro tempore", "senate", "r", "congressman", "soon",
+                    "met", "goes", "acts", "example", "fff", "bill", "act", "obama", 'v']
     stopWords.update(newStopWords)  # updates stop words to include congressional stop words
     peopleNotIn = 0  # counts how many people that politicians that speak cannot be found in our legislators dictionary
 
@@ -50,6 +52,7 @@ def main():
     # builds dictionary where key is a speaker and value is an array of all of their speeches
     if recompileWriter:
         speakerDict = buildWriterFile(rootdir)
+
     # if we don't want to re-clean the congressional record, this builds the dictionary of speakers and speeches
     else:
         speakerDict = parseWriterFile()
@@ -58,7 +61,7 @@ def main():
     numberOfSpeechesGop = 0  # stores number of speeches given by GOP
     ps = PorterStemmer()  # intiializes stemming object
     nonpartisanWordCounts = {}  # maintains a count of all words said, regardless of party
-    democratWordCounts = {}
+    democratWordCounts = {}  # maintains a count of all words said by Demcrats
 
     # stores a count of every word and bigram said and whether it is used more by republicans or democrats
     wordsWoStopWords = {}
@@ -67,7 +70,8 @@ def main():
 
         # an array maintaining every speech given by speaker, after removing stop words, and the year it was given
         filteredSpeechWords = []
-        speakerArr = speaker.split(";")
+
+        speakerArr = speaker.split(";")  # list that has [name of speaker (+ "of " + their state), chamber]
         speakerName = speakerArr[0]  # stores speaker's name
         chamber = speakerArr[1]  # stores whether speaker in senate or house
         if speaker not in wordStems:
@@ -76,9 +80,9 @@ def main():
         speakerDictKey = speaker.split(".")[-1].lower()[1:]  # stores name of spekaer without prefix and their chamber
 
         for tup in speakerDict[speaker]:
-            speech = tup[1] #stores speech given by speaker
-            year = tup[0] #stores year that speech was given
-            sp = "" #stores the speech given after removing stop words
+            speech = tup[1]  # stores speech given by speaker
+            year = tup[0]  # stores year that speech was given
+            sp = ""  # stores the speech given after removing stop words
 
             # finds party of speaker and assigns "not found" if cannot find speaker
             try:
@@ -94,8 +98,7 @@ def main():
                     if ch.isalpha() or ch == " ":
                         word += ch.lower()
                 if word not in stopWords:  # filters to remove stop words
-                    word = word + " "
-                    """wordArr = word.split(" ")
+                    wordArr = word.split(" ")
                     word = ""
                     for wordToCheck in wordArr:
                         if wordToCheck not in stopWords:
@@ -105,18 +108,18 @@ def main():
                             word = ""
                             checkPhrase = False
 
-                    if not checkPhrase:
+                    if not checkPhrase:  # as long as the word is not in stopWords, keep going
                         continue
-                        """
 
                     if not hasNumbers(word):  # filters to remove numbers and words containing numbers, e.g.
-                        sp += word  # adds word to filtered speech
-
-                        w = word
+                        wo = word
                         word = ""
-                        for ch in w:
+                        for ch in wo:
                             if ch.isalpha() or ch == " ":
                                 word += ch.lower()
+
+                        sp += word  # adds word to filtered speech
+
                         word = word.strip()
 
                         if word not in nonpartisanWordCounts:
@@ -136,7 +139,7 @@ def main():
                         # increases count if dem said word the word
                         if speakerParty == "democrat":
                             wordsWoStopWords[word] = wordsWoStopWords[word] + 1
-                            democratWordCounts[word] = democratWordCounts[word] - 1
+                            democratWordCounts[word] = democratWordCounts[word] + 1
 
                         # decreases count if gop said word the word
                         elif speakerParty == "republican":
@@ -172,6 +175,7 @@ def main():
             numberOfSpeechesBoolean = False
 
             bigrams = list(nltk.bigrams(speech.split()))  # creates a list of all bigrams in the filtered speech
+            removeWordThreshold = .8
             for gram in bigrams:
                 word = ""  # stores the bigram as a string
                 skip = False  # if True, should skip the bigram because it contains a stop word
@@ -184,12 +188,6 @@ def main():
                 word = word[:-1]  # gets rid of the space on the end of the bigram string
                 if not hasNumbers(word):  # skips the bigram if it contains a number
                     if word not in stopWords:  # skips the bigram if it is in the stop words
-                        w = word
-                        word = ""
-                        for ch in w:
-                            if ch.isalpha() or ch == " ":
-                                word += ch.lower()
-                        word = word.strip()
 
                         # adds the word to the dictionary containing a count of words with partisan association
                         if word not in wordsWoStopWords:
@@ -213,35 +211,96 @@ def main():
                         elif speakerParty == "republican":
                             wordsWoStopWords[word] = wordsWoStopWords[word] - 1
 
-            #TODO: Work on finishing this stemming and rearrange order of bigram computation to pull bigrams of stems
+                        """if p percent of the time that a word occurs is within a bigram, we remove the individual word
+                        from our word count dictionaries"""
+                        for w in gram:
+                            try:
+                                if (nonpartisanWordCounts[word])/(nonpartisanWordCounts[w]) > removeWordThreshold:
+                                    nonpartisanWordCounts.pop(w)
+                                    wordsWoStopWords.pop(w)
+                                    democratWordCounts.pop(w)
+                            except:
+                                pass
 
-    """
     democratFrequencies = {}
+    republicanFrequencies = {}
+    minimumOccurunces = 150
     for word in nonpartisanWordCounts:
         totalMentions = nonpartisanWordCounts[word]
-        democratMentions = democratWordCounts[word]
-        democratFrequencies[word] = democratMentions/totalMentions
-    """
+        if totalMentions >= minimumOccurunces:
+            democratMentions = democratWordCounts[word]
+            republicanMentions = totalMentions - democratMentions
+            democratFrequencies[word] = democratMentions/totalMentions
+            republicanFrequencies[word] = republicanMentions/totalMentions
+            if word == "aerodrom":
+                print(str(democratMentions) + "    " + str(totalMentions))
+                print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
     print(str(numberOfSpeechesDems) + " speeches from Dems over " + str(numberOfDays) + " days")
     print(str(numberOfSpeechesGop) + " speeches from GOP over " + str(numberOfDays) + " days")
     print(peopleNotIn)
 
     # prints the words that have the greatest magnitude of difference between times parties said word
-    printTopWords(wordsWoStopWords, 250)
+    printTopWords(wordsWoStopWords, 1000)
 
     print("\n\n\n non-partisan word Counts: \n")
-    printTopWords(nonpartisanWordCounts, 250)  # prints the words that are said most regardless of party
+    printTopWords(nonpartisanWordCounts, 1000)  # prints the words that are said most regardless of party
 
-    #print("\n\n\n Democrat word Counts: \n")
-    #printTopWords(democratWordCounts, 100)  # prints the words that are said most by Democrats
+    print("\n\n\n Democrat word Counts: \n")
+    printTopWords(democratWordCounts, 1000)  # prints the words that are said most by Democrats
 
-    #print("\n\n\n Democratic Frequencies: \n")
-    #printTopFrequencies(democratFrequencies, 100)
+    printTopFrequencies(republicanFrequencies, nonpartisanWordCounts, 1000, "republicans")
+    printTopFrequencies(democratFrequencies, nonpartisanWordCounts, 1000, "democrats")
 
 def parseWriterFile():
+    # TODO: implement this method!!
+
+    # uncomment stuff below relating to counter and mod and lists wihtin contentList if the array gets too large
     speakerDict = {}
+    contents = ""
+    contentList = []
+    # counter = 0
+    followsLineBreak = False
+    f = open("writer.txt", "r")
+    for line in f:
+        # mod = counter % 100
+        # if mod == 0:
+        #    contentList.append([])
+        holder = line
+        contents += holder
+        if followsLineBreak:
+            followsLineBreak = False
+            if holder == "\n":
+                # contentList[len(contentList-1)].append(contents)
+                contentList.append(contents)
+                contents = ""
+        elif holder == "\n":
+            followsLineBreak = True
+        # counter += 1
+    f.close()
+
+    for r in contentList:
+        nameEnd = findNth(r, ".", 2)  # finds the length of the speaker's name
+        name = r[0:nameEnd].lower()  # stores the name of the speaker including their prefix
+        speechLen = len(r)
+        year = r[speechLen-6:speechLen-2]
+        chamber = r[speechLen-10:speechLen-7]
+
+        if name+";"+chamber not in speakerDict:
+            speakerDict[name+";"+chamber] = list()
+
+        if nameEnd != -1:
+            speech = r[nameEnd:]
+        else:
+            continue
+            # was "speech = ''"
+
+        # appends the year and the speech to the speaker's list of speeches
+        speakerDict[name + ";" + chamber].append((year, speech))
+        # was "speakerDict[name + ";" + chamber].append((year, r[nameEnd:))"
+
     return speakerDict
+
 
 def buildWriterFile(rootdir):
     speakerDict = {}
@@ -251,12 +310,14 @@ def buildWriterFile(rootdir):
 
                 year = subdir[-15:-11]  # stores year that speech was given
                 date = subdir[-10:-5]  # stores date that speech was given
-                month = date[:2]  # stores month that speech was given
+                # month = date[:2]  # stores month that speech was given
                 print(date + " in year " + year)
 
+                """
                 # GET RID OF THIS FOR FINAL ANALYSIS
-                if int(year) < 2019:
+                if int(year) < 2017:
                     break
+                """
 
                 fname = subdir + '\\' + file
                 f = open(fname, 'r')  # opens file that contains speech
@@ -264,11 +325,11 @@ def buildWriterFile(rootdir):
                 for line in f:
                     contents += line
                 f.close()
-                chamber = findChamber(subdir + "\\" +file)  # stores whether speech given in house or senate
+                chamber = findChamber(subdir + "\\" + file)  # stores whether speech given in house or senate
                 contents = cleanContents(contents)  # gets rid of html jargon stored in speech
-                dirtyWriter = open("dirtyWriter.txt", 'a')
+                """dirtyWriter = open("dirtyWriter.txt", 'a')
                 dirtyWriter.write(contents)
-                dirtyWriter.close()
+                dirtyWriter.close()"""
 
                 # stores a list of all the speeches given in the html file
                 contentList = cleanForSpeeches(contents, year, True)
@@ -284,25 +345,32 @@ def buildWriterFile(rootdir):
 
     return speakerDict
 
-"""
-def printTopFrequencies(wordCount, howMany):
+
+def printTopFrequencies(wordCount, totalMentions, howMany, party):
     topWords = []  # heap of all of the words
 
     for w in wordCount:
-        heapq.heappush(topWords, (wordCount[w], w))
+        heapq.heappush(topWords, (-wordCount[w], w, totalMentions[w]))
 
     # prints the words that have the greatest magnitude of difference between times parties said word
     counter = 0
+    stringToWrite = ""
     while counter < howMany:
         clause = heapq.heappop(topWords)
-        counter+=1
-        print(clause)
-"""
+        counter += 1
+        stringToWrite = (stringToWrite + str(clause[0]) + " " + clause[1] + " " + str(clause[2]) + "\n")
+        if clause[0] > .5 and " " in clause[1]:
+            print(clause[1])
+    f = open(party+"Frequencies.txt", "w")
+    f.write(stringToWrite)
+    f.close()
+
 
 def printTopWords(wordCount, howMany):
     """
     prints the words magnitude of difference between times parties said word and that magnitude
-    :param wordCount: Dictionary, howMany: int
+    :param wordCount: Dictionary that contains words or bigrams and the number of times they are said
+    :param howMany: int denoting how many of the most occurring words to print
     :return: None
     """
 
@@ -320,10 +388,10 @@ def printTopWords(wordCount, howMany):
     counter = 0
     while counter < howMany:
         clause = heapq.heappop(topWords)
-        counter+=1
+        counter += 1
         print(clause)
 
-    #TODO: find a way to only print individual words if they are not part of a bigram that also occurs often
+    # TODO: find a way to only print individual words if they are not part of a bigram that also occurs often
 
 
 def findChamber(fname):
@@ -334,13 +402,15 @@ def findChamber(fname):
     """
 
     chamberAbb = fname[fname.find("Pg") + 2:][: 1]  # gets what chamber the file address lists the record as from
-    switcher = {
-        "H": "rep",
-        "S": "sen",
-        "D": "not found",
-        "E": findEChamber(fname)  # finds the chamber when the file is an extension of remarks from a chamber
-    }
-    return switcher.get(chamberAbb, "Could Not Find")  # returns the chamber of the record
+    if chamberAbb == "H":
+        return "rep"
+    elif chamberAbb == "S":
+        return "sen"
+    elif chamberAbb == "D":
+        return "not found"
+    elif chamberAbb == "E":
+        return findEChamber(fname)  # finds the chamber when the file is an extension of remarks from a chamber
+    return "Could Not Find"  # returns "Could Not Find" if none of the other instances are true
 
 
 def findEChamber(fname):
@@ -359,11 +429,7 @@ def findEChamber(fname):
 
     # cleans the file contents to only contain the speeches
     contents = cleanContents(contents)
-    cleanedContents = cleanForSpeeches(contents, "0", False)
-
-    # returns "not found" if the file is not an extension of remarks, but has file label "D"
-    if len(cleanedContents) == 0:
-        return "not found"
+    # cleanedContents = cleanForSpeeches(contents, "0", False)
 
     # strips contents down to only contain the line that contains the chamber of the record
     contents = contents[contents.find("in the"):]
@@ -374,8 +440,11 @@ def findEChamber(fname):
     # returns "rep" if the record is from the house and "sen" otherwise
     if chamber[:3] == "rep":
         return "rep"
-    else:
+    elif chamber[:3] == "sen":
         return "sen"
+    else:
+        print(fname)
+        return "not found"
 
 
 def createLegislatorsDict():
@@ -426,7 +495,7 @@ def cleanContents(contents):
     ret = contents[bodystart:bodyend]
 
     # gets rid of anything that is not in the pre
-    if (ret.index("<pre>") != -1):
+    if ret.index("<pre>") != -1:
         retstart = ret.index('<pre>') + 5
         retend = ret.index('</pre>')
         ret = ret[retstart:retend]
@@ -442,7 +511,7 @@ def cleanForSpeeches(contents, year, writeToFile = False):
     """
 
     recordList = []  # initializes the list of speeches that will be returned
-    while (True):
+    while True:
         speaker = findSpeaker(contents)  # returns the speaker of the next speech
 
         # potential spots where the next speaker started speech in record
@@ -455,11 +524,11 @@ def cleanForSpeeches(contents, year, writeToFile = False):
             break
 
         else:
-            #backgroundInfo = collectInfo(spotToCheck, contents) #gather speaker, state, chamber, and date
+            # backgroundInfo = collectInfo(spotToCheck, contents) #gather speaker, state, chamber, and date
 
-            contents = contents[spotToCheck:] # trims everything before the next speech
-            possibleEnds = ["____________________", findSpeaker(contents[3:])] # potential spots where next speech ends
-            endSpot = findFirstOcc(possibleEnds, contents[3:]) #returns where next speech ends or inf if it is EOF
+            contents = contents[spotToCheck:]  # trims everything before the next speech
+            possibleEnds = ["____________________", findSpeaker(contents[3:])]  # potential spots where next speech ends
+            endSpot = findFirstOcc(possibleEnds, contents[3:])  # returns where next speech ends or inf if it is EOF
 
             # reassings end of next speech to be the length of the contents if it is at the EOF
             if endSpot == float('inf'):
@@ -467,15 +536,18 @@ def cleanForSpeeches(contents, year, writeToFile = False):
 
             # removes page numbers from contents
             pageLoc = contents.find("[[Page ")
-            while (pageLoc != -1):
+            while pageLoc != -1:
                 pageFinder = re.search('[[][[][P][a][g][e][ ].[0-9]+]]', contents)
-                page = pageFinder.group(0)
+                try:
+                    page = pageFinder.group(0)
+                except:
+                    break
                 contents = contents.replace(page, '')
                 pageLoc = contents.find("[[Page ")
 
             # removes instances of "______________" from contents
             underscoreLoc = contents.find("______________")
-            while (underscoreLoc != -1):
+            while underscoreLoc != -1:
                 underscoreFinder = re.search('[_]+', contents)
                 underscore = underscoreFinder.group(0)
                 contents = contents.replace(underscore, '')
@@ -483,27 +555,27 @@ def cleanForSpeeches(contents, year, writeToFile = False):
 
             # replaces instance of a double line break with a single line break
             lineBreakLoc = contents.find("\n\n")
-            while (lineBreakLoc != -1):
+            while lineBreakLoc != -1:
                 contents = contents.replace("\n\n", "\n")
                 lineBreakLoc = contents.find("\n\n")
 
-
-            if (contents[0:1] == 'M'): # checks for if it is a speaker or a formality
-                 if "[Roll No. " not in contents[:endSpot]: # checks for if it is a speaker or a formality
+            if contents[0:1] == 'M':  # checks for if it is a speaker or a formality
+                if "[Roll No. " not in contents[:endSpot]:  # checks for if it is a speaker or a formality
                     recordList.append(contents[:endSpot])  # if actually a speech, append the speech to recordList
 
-            contents = contents[endSpot:]  #update contents to not contain the speech we just added
+            contents = contents[endSpot:]  # update contents to not contain the speech we just added
 
-    if writeToFile:
+    """if writeToFile:
         # write the speeches to a file named "writer.txt" with "\n\n\n" between each of the speeches
         writer = open("writer.txt", 'a')
         for r in recordList:
             for ch in r:
                 writer.write(ch)
-            writer.write("\n" + year + "\n\n")
-        writer.close()
+            writer.write("\n" + chamber + "\n" + year + "\n\n")
+        writer.close()"""
 
     return recordList  # return a list of the speeches
+
 
 def collectInfo(check, contents):
     """
@@ -530,7 +602,7 @@ def collectInfo(check, contents):
         # gathers the information that we want to return
         if contents[check] == "\n":  # only looks at new lines so that we only check lines where new information occurs
             lines += 1  # updates the number of lines we look at
-            if lines%2 == 0:  # accounts for the double line break between lines
+            if lines % 2 == 0:  # accounts for the double line break between lines
                 temp = check
             if lines == 3:
                 date = contents[check:temp]  # assigns the date the speech was made
@@ -541,9 +613,10 @@ def collectInfo(check, contents):
             if lines == 9:
                 speaker = contents[check:temp].replace("HON. ", "")  # assigns the name of the speaker
                 break
-        check -=1  # updates the location of that we want to check in contents
+        check -= 1  # updates the location of that we want to check in contents
 
     return [speaker, state, chamber, date]  # returns an array of the information we want
+
 
 def findSpeaker(contents):
     """
@@ -562,7 +635,8 @@ def findSpeaker(contents):
 
     return speaker
 
-def findFirstOcc(array, contents, startBool = False):
+
+def findFirstOcc(array, contents, startBool=False):
     """
     Finds the first occurunce in contents of any one of the elements in array and returns where that occurunce is
     :param array: List that we want to find where the first occurunce of any one of the elements in the list is
@@ -587,6 +661,7 @@ def findFirstOcc(array, contents, startBool = False):
 
     return spotToCheck
 
+
 def findNth(haystack, needle, n):
     """
     Finds the location of the n-th occurunce of needle in haystack
@@ -594,14 +669,15 @@ def findNth(haystack, needle, n):
     :param haystack: String that we want to parse for the n-th occurunce of needle
     :param needle: String that we want to find in haystack
     :param n: one more than the number of occurunces of needle we want to skip in haystack
-    :return: int for the location of the n-th occurunce of needle in haystack
+    :return: int for the location of the n-th occurunce of needle in haystack, return -1 if not found
     """
 
-    start = haystack.index(needle)
+    start = haystack.find(needle)
     while start >= 0 and n > 1:
-        start = haystack.index(needle, start+len(needle))
+        start = haystack.find(needle, start+len(needle))
         n -= 1
     return start
+
 
 """
 def hasPhrase(phraseToCheck):
