@@ -83,6 +83,7 @@ def main():
         nameToSearch = speakerName[speakerName.find(" ") + 1:]  # name of speaker without prefix
         speakerDictKey = speaker.split(".")[-1].lower()[1:]  # stores name of spekaer without prefix and their chamber
 
+        numberOfSpeechesBoolean = True  # helper boolean to keep track of number of speeches we parse
         for tup in speakerDict[speaker]:
             speech = tup[1]  # stores speech given by speaker
             year = tup[0]  # stores year that speech was given
@@ -90,6 +91,14 @@ def main():
 
             # finds party of speaker and assigns "not found" if cannot find speaker
             speakerParty = legislators.getSpeakerParty(year, speakerDictKey)
+
+            # adds the number of speeches given by the speaker to the appropriate party's speech count
+            if numberOfSpeechesBoolean:
+                if speakerParty == "democrat":
+                    numberOfSpeechesDems += len(speakerDict[speaker])
+                elif speakerParty == "republican":
+                    numberOfSpeechesGop += len(speakerDict[speaker])
+            numberOfSpeechesBoolean = False
 
             # TODO: implement this next bit in a functino in the wordCounter class
             for w in speech.split(" "):
@@ -158,21 +167,12 @@ def main():
                 peopleNotIn += 1
                 print(nameToSearch + ";" + chamber + "     " + str(year))
 
-        numberOfSpeechesBoolean = True  # helper boolean to keep track of number of speeches we parse
         for entry in filteredSpeechWords:
             speech = entry[0]  # filtered speech
             year = entry[1]  # year of speech
 
             # finds party of speaker and assigns "not found" if cannot find speaker
             speakerParty = legislators.getSpeakerParty(year, speakerDictKey)
-
-            # adds the number of speeches given by the speaker to the appropriate party's speech count
-            if numberOfSpeechesBoolean:
-                if speakerParty == "democrat":
-                    numberOfSpeechesDems += len(speakerDict[speaker])
-                elif speakerParty == "republican":
-                    numberOfSpeechesGop += len(speakerDict[speaker])
-            numberOfSpeechesBoolean = False
 
             bigrams = list(nltk.bigrams(speech.split()))  # creates a list of all bigrams in the filtered speech
             removeWordThreshold = 1/8
@@ -247,7 +247,7 @@ def main():
     print(peopleNotIn)
 
     # prints the words that have the greatest magnitude of difference between times parties said word
-    #printTopWords(wordsWoStopWords, 1000)
+    # printTopWords(wordsWoStopWords, 1000)
 
     print("\n\n\n non-partisan word Counts: \n")
     #printTopWords(nonpartisanWordCounts, 1000)  # prints the words that are said most regardless of party
