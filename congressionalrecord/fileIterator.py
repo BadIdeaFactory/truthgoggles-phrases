@@ -1,8 +1,8 @@
 # from stateAbbreviations import getStateAbbreviations
 # from politician import Politician
+from PoliticiansDatabase import PoliticiansDatabase
 import os
 import re
-import json
 import nltk
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
@@ -11,7 +11,7 @@ import heapq
 
 
 def main():
-    rootdir = 'C:/Users/pouya\python-projects\\truth-goggles-phrases\congressionalrecord\output'
+    rootdir = 'C:/Users/pouya\python-projects\\truth-goggles\congressionalrecord\output'
     recompileWriter = True
     """if recompileWriter:
         # resets the files to be empty to run our new program
@@ -42,34 +42,33 @@ def main():
     stopWords.update(newStopWords)  # updates stop words to include congressional stop words
     peopleNotIn = 0  # counts how many people that politicians that speak cannot be found in our legislators dictionary
 
-    # creates dictinoary of legislators to cross-reference for party and chamber
-    legislators = createLegislatorsDict()
-    writer = open("legislator.json", 'w')
-    json.dump(legislators, writer)
-    writer.close()
+    # creates dictionary of legislators to cross-reference for party and chamber
+    legislators = PoliticiansDatabase()
 
     # if we want to re-parse/clean the congressional record, this builds the dictionary of speakers and speeches
     # builds dictionary where key is a speaker and value is an array of all of their speeches
-    if recompileWriter:
-        speakerDict = buildWriterFile(rootdir)
+    speakerDict = buildWriterFile(rootdir)
 
-    # if we don't want to re-clean the congressional record, this builds the dictionary of speakers and speeches
-    else:
-        speakerDict = parseWriterFile()
 
     numberOfSpeechesDems = 0  # stores number of speeches given by Dems
     numberOfSpeechesGop = 0  # stores number of speeches given by GOP
     ps = PorterStemmer()  # intiializes stemming object
     nonpartisanWordCounts = []  # maintains a count of all words said, regardless of party
     democratWordCounts = []  # maintains a count of all words said by Demcrats
+    democratFrequencies = []  # stores the percentage of times a word is said by a Democrat
+    republicanFrequencies = []  # stores the percentage of times a word is said by GOP
+
 
     # stores a count of every word and bigram said and whether it is used more by republicans or democrats
-    wordsWoStopWords = {}
-    wordCountsList = []
+    wordsWoStopWords = []
+    wordCounts = []
     for i in range(26):
-        wordsCounts.append({})
-        democratWordCounts.append({})
-        nonPartisanWordCounts.append({})
+        wordCounts.append({})
+        wordsWoStopWords.append({})
+        democratWordCounts.append({})     # TODO: probably implement these using classes
+        nonpartisanWordCounts.append({})
+        democratFrequencies.append({})
+        republicanFrequencies.append({})
 
     for speaker in speakerDict:  # iterates through the speakers of all speeches
 
@@ -90,11 +89,9 @@ def main():
             sp = ""  # stores the speech given after removing stop words
 
             # finds party of speaker and assigns "not found" if cannot find speaker
-            try:
-                speakerParty = legislators[year][speakerDictKey]['terms']['party'].lower()
-            except:
-                speakerParty = "not found"
+            speakerParty = legislators.getSpeakerParty(year, speakerDictKey)
 
+            # TODO: implement this next bit in a functino in the wordCounter class
             for w in speech.split(" "):
 
                 checkPhrase = True  # boolean that checks to see if we should skip the phrase if it contains a stop word
@@ -155,7 +152,7 @@ def main():
             filteredSpeechWords.append((sp, year))  # adds speech and year to list of filtered speeches
 
             # checks to see if speaker is in our legislators database and maintains count of speakers not in it
-            if (nameToSearch + ";" + chamber) in legislators[year]:
+            if (nameToSearch + ";" + chamber) in legislators.yearOfLegislators(year):
                 pass
             else:
                 peopleNotIn += 1
@@ -167,10 +164,7 @@ def main():
             year = entry[1]  # year of speech
 
             # finds party of speaker and assigns "not found" if cannot find speaker
-            try:
-                speakerParty = legislators[year][speakerDictKey]['terms']['party'].lower()
-            except:
-                speakerParty = "not found"
+            speakerParty = legislators.getSpeakerParty(year, speakerDictKey)
 
             # adds the number of speeches given by the speaker to the appropriate party's speech count
             if numberOfSpeechesBoolean:
@@ -222,7 +216,7 @@ def main():
                         from our word count dictionaries"""
                         for w in gram:
                             try:
-                                bigramMentions = nonpartisanWordCounts[placeInArr][word])
+                                bigramMentions = nonpartisanWordCounts[placeInArr][word]
                                 singleWordMentions = nonpartisanWordCounts[placeInArr][w]
                                 frequencyOfWord = bigramMentions/singleWordMentions
                                 if frequencyOfWord > removeWordThreshold:
@@ -232,85 +226,39 @@ def main():
                             except:
                                 pass
 
-    democratFrequencies = {}
-    republicanFrequencies = {}
-    minimumOccurunces = 150
-    for word in nonpartisanWordCounts:
-        totalMentions = nonpartisanWordCounts[word]
-        if totalMentions >= minimumOccurunces:
-            democratMentions = democratWordCounts[word]
-            republicanMentions = totalMentions - democratMentions
-            democratFrequencies[word] = democratMentions/totalMentions
-            republicanFrequencies[word] = republicanMentions/totalMentions
-            if word == "aerodrom":
-                print(str(democratMentions) + "    " + str(totalMentions))
-                print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    minimumOccurunces = 125
+    wordCountLen = 0
+    for letter in range(len(nonpartisanWordCounts)):
+        wordCountLen += len(nonpartisanWordCounts[letter])
+        for word in nonpartisanWordCounts[letter]:
+            totalMentions = nonpartisanWordCounts[letter][word]
+
+            if totalMentions >= minimumOccurunces:
+                democratMentions = democratWordCounts[letter][word]
+                republicanMentions = totalMentions - democratMentions
+                democratFrequencies[letter][word] = democratMentions/totalMentions
+                republicanFrequencies[letter][word] = republicanMentions/totalMentions
+                if word == "aerodrom":
+                    print(str(democratMentions) + "    " + str(totalMentions))
+                    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
     print(str(numberOfSpeechesDems) + " speeches from Dems over " + str(numberOfDays) + " days")
     print(str(numberOfSpeechesGop) + " speeches from GOP over " + str(numberOfDays) + " days")
     print(peopleNotIn)
 
     # prints the words that have the greatest magnitude of difference between times parties said word
-    printTopWords(wordsWoStopWords, 1000)
+    #printTopWords(wordsWoStopWords, 1000)
 
     print("\n\n\n non-partisan word Counts: \n")
-    printTopWords(nonpartisanWordCounts, 1000)  # prints the words that are said most regardless of party
+    #printTopWords(nonpartisanWordCounts, 1000)  # prints the words that are said most regardless of party
 
     print("\n\n\n Democrat word Counts: \n")
-    printTopWords(democratWordCounts, 1000)  # prints the words that are said most by Democrats
+    #printTopWords(democratWordCounts, 1000)  # prints the words that are said most by Democrats
+
+    print(wordCountLen)
 
     printTopFrequencies(republicanFrequencies, nonpartisanWordCounts, 1000, "republicans")
     printTopFrequencies(democratFrequencies, nonpartisanWordCounts, 1000, "democrats")
-
-def parseWriterFile():
-    # TODO: implement this method!!
-
-    # uncomment stuff below relating to counter and mod and lists wihtin contentList if the array gets too large
-    speakerDict = {}
-    contents = ""
-    contentList = []
-    # counter = 0
-    followsLineBreak = False
-    f = open("writer.txt", "r")
-    for line in f:
-        # mod = counter % 100
-        # if mod == 0:
-        #    contentList.append([])
-        holder = line
-        contents += holder
-        if followsLineBreak:
-            followsLineBreak = False
-            if holder == "\n":
-                # contentList[len(contentList-1)].append(contents)
-                contentList.append(contents)
-                contents = ""
-        elif holder == "\n":
-            followsLineBreak = True
-        # counter += 1
-    f.close()
-
-    for r in contentList:
-        nameEnd = findNth(r, ".", 2)  # finds the length of the speaker's name
-        name = r[0:nameEnd].lower()  # stores the name of the speaker including their prefix
-        speechLen = len(r)
-        year = r[speechLen-6:speechLen-2]
-        chamber = r[speechLen-10:speechLen-7]
-
-        if name+";"+chamber not in speakerDict:
-            speakerDict[name+";"+chamber] = list()
-
-        if nameEnd != -1:
-            speech = r[nameEnd:]
-        else:
-            continue
-            # was "speech = ''"
-
-        # appends the year and the speech to the speaker's list of speeches
-        speakerDict[name + ";" + chamber].append((year, speech))
-        # was "speakerDict[name + ";" + chamber].append((year, r[nameEnd:))"
-
-    return speakerDict
-
 
 def buildWriterFile(rootdir):
     speakerDict = {}
@@ -323,11 +271,11 @@ def buildWriterFile(rootdir):
                 # month = date[:2]  # stores month that speech was given
                 print(date + " in year " + year)
 
-                """
+                
                 # GET RID OF THIS FOR FINAL ANALYSIS
-                if int(year) < 2017:
+                if int(year) < 2014:
                     break
-                """
+                
 
                 fname = subdir + '\\' + file
                 f = open(fname, 'r')  # opens file that contains speech
@@ -355,20 +303,32 @@ def buildWriterFile(rootdir):
 
     return speakerDict
 
-
 def printTopFrequencies(wordCount, totalMentions, howMany, party):
     topWords = []  # heap of all of the words
+    
+    wordCountLen = 0
 
-    for w in wordCount:
-        heapq.heappush(topWords, (-wordCount[w], w, totalMentions[w]))
+    for letter in range(len(wordCount)):
+        wordCountLen+=len(wordCount[letter])
+        for w in wordCount[letter]:
+            topWords.append((-wordCount[letter][w], w, -totalMentions[letter][w]))
+            if len(topWords) > howMany:
+                maxLoc = topWords.index(max(topWords))
+                if maxLoc == len(topWords)-1:
+                    topWords.pop()
+                else:
+                    topWords[maxLoc] = topWords.pop()
 
+    print(wordCountLen)
+    print(len(topWords))
     # prints the words that have the greatest magnitude of difference between times parties said word
     counter = 0
     stringToWrite = ""
+    heapq.heapify(topWords)
     while counter < howMany:
         clause = heapq.heappop(topWords)
         counter += 1
-        stringToWrite = (stringToWrite + str(clause[0]) + " " + clause[1] + " " + str(clause[2]) + "\n")
+        stringToWrite = (stringToWrite + str(clause[0])[1:4] + "           " + str(clause[1]) +"\n")#+ "        " + str(clause[2]) + "\n")
         if clause[0] > .5 and " " in clause[1]:
             print(clause[1])
     f = open(party+"Frequencies.txt", "w")
@@ -385,14 +345,17 @@ def printTopWords(wordCount, howMany):
     """
 
     topWords = []  # heap of all of the words
+    wordCountLen = 0
 
     """initializes the heap with a tuple: (magnitude of difference between times parties said word,
     the word, which party said the word more)"""
-    for w in wordCount:
-        if wordCount[w] < 0:
-            heapq.heappush(topWords, (wordCount[w], w, "republicans"))
-        else:
-            heapq.heappush(topWords, (-wordCount[w], w, "democrats"))
+    for letter in range(len(wordCount)):
+        wordCountLen+=len(wordCount[letter])
+        for w in wordCount[letter]:
+            if wordCount[letter][w] < 0:
+                heapq.heappush(topWords, (wordCount[letter][w], w, "republicans"))
+            else:
+                heapq.heappush(topWords, (-wordCount[letter][w], w, "democrats"))
 
     # prints the words that have the greatest magnitude of difference between times parties said word
     counter = 0
@@ -401,7 +364,17 @@ def printTopWords(wordCount, howMany):
         counter += 1
         print(clause)
 
-    # TODO: find a way to only print individual words if they are not part of a bigram that also occurs often
+    print(wordCountLen)
+
+
+def findLargestInHeap(h):
+    ret = -1
+    minVal = float('inf')
+    for i in range(len(h)):
+        if h[i][0] < minVal:
+            minVal = h[i][0]
+            ret = i
+    return ret
 
 
 def findChamber(fname):
@@ -455,31 +428,6 @@ def findEChamber(fname):
     else:
         print(fname)
         return "not found"
-
-
-def createLegislatorsDict():
-    """
-    Creates our dictionary containing the information of all of the politicians
-
-    :return: Dictionary containing a politician's name and chamber as the key and their term and
-                full name information as the value, all grouped by the year
-    """
-
-    # reads in the json files containing the information of the politicians
-    f = open("currentLegislators.json", "r")
-    current = json.load(f)
-    f.close()
-    f = open("historicalLegislators.json", "r")
-    historical = json.load(f)
-    f.close()
-
-    for year in current:  # loops through the years that we are concerned about for current
-        for person in current[year]:  # loops through the politicians that were in congress during that year
-
-            # puts current politicians into the same dictionary as retired politicians
-            historical[year][person] = current[year][person]
-
-    return historical
 
 
 def hasNumbers(inputString):

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3ec2311-668a-4ae9-ba6c-8a121c6c03a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/congressionalrecord/PoliticiansDatabase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/congressionalrecord/WordCounter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/congressionalrecord/fileIterator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congressionalrecord/politician.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +16,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="237" column="38" selection-start-line="237" selection-start-column="38" selection-end-line="237" selection-end-column="38" />
+            <state relative-caret-position="358">
+              <caret line="163" column="41" lean-forward="true" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/congressionalrecord/WordCounter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="413">
+              <caret line="87" column="103" selection-start-line="87" selection-start-column="103" selection-end-line="87" selection-end-column="103" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/congressionalrecord/PoliticiansDatabase.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="88" selection-start-line="41" selection-start-column="88" selection-end-line="41" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -32,7 +57,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cleanForSpeech</find>
       <find>cleanForSpeeches</find>
       <find>dirty</find>
       <find>writer</find>
@@ -51,14 +75,18 @@
       <find>haven</find>
       <find>numberOfDays</find>
       <find>wordCount</find>
-      <find>wordCount</find>
-      <find>wordCount</find>
       <find>filtered</find>
       <find>numberOfSpeeches</find>
       <find>hasPhrase</find>
       <find>cleanForSpe</find>
       <find>findFirst</find>
       <find>porterstemmer</find>
+      <find>wordsWo</find>
+      <find>201</find>
+      <find>porter</find>
+      <find>legislat</find>
+      <find>legislators</find>
+      <find>ps</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -79,7 +107,11 @@
         <option value="$PROJECT_DIR$/congressionalrecord/cli.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/pg_run/pg_cr_bulkwrite.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/formatLegislators.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/PoliticiansList.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/Politicians.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/PoliticiansDatabase.py" />
         <option value="$PROJECT_DIR$/congressionalrecord/fileIterator.py" />
+        <option value="$PROJECT_DIR$/congressionalrecord/WordCounter.py" />
       </list>
     </option>
   </component>
@@ -181,7 +213,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1891892" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16613673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -261,13 +293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/congressionalrecord/politician.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/govinfo/downloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
@@ -308,10 +333,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/politician.py" />
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/PoliticiansDatabase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="88" selection-start-line="41" selection-start-column="88" selection-end-line="41" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/congressionalrecord/fileIterator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="237" column="38" selection-start-line="237" selection-start-column="38" selection-end-line="237" selection-end-column="38" />
+        <state relative-caret-position="358">
+          <caret line="163" column="41" lean-forward="true" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/congressionalrecord/WordCounter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="87" column="103" selection-start-line="87" selection-start-column="103" selection-end-line="87" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
