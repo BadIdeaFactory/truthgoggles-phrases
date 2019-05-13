@@ -1,6 +1,7 @@
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
+import heapq
 
 
 class WordCounter:
@@ -143,6 +144,39 @@ class WordCounter:
         # decreases count if gop said word the word
         elif speakerParty == "republican":
             self.wordsWoStopWords[placeInArr][word] = self.wordsWoStopWords[placeInArr][word] - 1
+
+    def printTopFrequencies(self, wordCount, totalMentions, howMany, party):
+        topWords = []  # heap of all of the words
+
+        wordCountLen = 0
+
+        for letter in range(len(wordCount)):
+            wordCountLen += len(wordCount[letter])
+            for w in wordCount[letter]:
+                topWords.append((-wordCount[letter][w], w, -totalMentions[letter][w]))
+                if len(topWords) > howMany:
+                    maxLoc = topWords.index(max(topWords))
+                    if maxLoc == len(topWords) - 1:
+                        topWords.pop()
+                    else:
+                        topWords[maxLoc] = topWords.pop()
+
+        print(wordCountLen)
+        print(len(topWords))
+        # prints the words that have the greatest magnitude of difference between times parties said word
+        counter = 0
+        stringToWrite = ""
+        heapq.heapify(topWords)
+        while counter < howMany:
+            clause = heapq.heappop(topWords)
+            counter += 1
+            stringToWrite = (stringToWrite + str(clause[0])[1:4] + "           " + str(
+                clause[1]) + "\n")  # + "        " + str(clause[2]) + "\n")
+            if clause[0] > .5 and " " in clause[1]:
+                print(clause[1])
+        f = open(party + "Frequencies.txt", "w")
+        f.write(stringToWrite)
+        f.close()
 
 
 
