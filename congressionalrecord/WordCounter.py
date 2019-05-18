@@ -2,10 +2,11 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import heapq
+from IndividualWordCounter import IndividualWordCounter as IWC
 
 
 class WordCounter:
-    words = []
+    words = []  # array that has pointers to all of the different word count dictionaries
     stopWords = set(stopwords.words('english'))
     newStopWords = ['congress', '', 'b', 'year', 'the', "'s", 'c', 'a', 'also', 'mr', 'ms', 'mrs', 'i', 'roll call',
                     'madam', "public law", "section", "act", "sec", "secretary state", "made available",
@@ -29,18 +30,34 @@ class WordCounter:
     democratFrequencies = []  # stores the percentage of times a word is said by a Democrat
     republicanFrequencies = []  # stores the percentage of times a word is said by GOP
 
+    counter1 = 0
+    counter2 = 0  # two counters to help keep track of how many words are stored
+
+    """
+    nonpartisanWordCounts = IWC("nonpartisanWordCounts")  # maintains a count of all words said, regardless of party
+    democratWordCounts = IWC("democratWordCounts")  # maintains a count of all words said by Demcrats
+    democratFrequencies = IWC("democratFrequencies")  # stores the percentage of times a word is said by a Democrat
+    republicanFrequencies = ["republicanFrequencies"]  # stores the percentage of times a word is said by GOP
+    """
+
     # stores a count of every word and bigram said and whether it is used more by republicans or democrats
     wordsWoStopWords = []
     wordCounts = []
 
     def __init__(self):
 
+        # initializes words array
         self.words = [self.wordCounts, self.wordsWoStopWords, self.democratWordCounts,
                       self.nonpartisanWordCounts, self.democratFrequencies, self.republicanFrequencies]
 
+        # initializes each word count dictionary
         for dic in self.words:
             for i in range(26):
-                dic.append({})
+                dic.append([])  # adds 26 arrays, one for each letter that a word could start with
+        for dic in self.words:
+            for let in dic:
+                for i in range(26):
+                    let.append({})  # adds 26 arrays to each subarray. One for each possible second letter in a word
 
         self.stopWords.update(self.newStopWords)  # updates stop words to include congressional stop words
 
@@ -53,7 +70,7 @@ class WordCounter:
             for ch in w:  # removes non-alpha and non-space characters from words
                 if ch.isalpha() or ch == " ":
                     word += ch.lower()
-            if word not in self.stopWords:  # filters to remove stop words
+            if word not in self.stopWords:  # entire conditional statement filters to remove stop words
                 wordArr = word.split(" ")
                 word = ""
                 for wordToCheck in wordArr:
@@ -75,13 +92,27 @@ class WordCounter:
                             word += ch.lower()
 
                     sp += word  # adds word to filtered speech
+                    word = word.strip()  # removes space from end of word
 
-                    word = word.strip()
-                    placeInArr = ord(word[0]) - ord('a')
+                    firstLetter = ord(word[0]) - ord('a')  # stores the position in the alphabet of the first letter
+                    try:
+                        secLetter = ord(word[1]) - ord('a')  # stores the position in the alphabet of the second letter
+                    except:
+                        secLetter = 25  # starts with 'z' otherwise
+                    placeInArr = (firstLetter, secLetter)  # stores the first and second letters in the word
 
-                    if word not in self.wordsWoStopWords[placeInArr]:
+                    if word not in self.wordsWoStopWords[firstLetter][secLetter]:
                         # adds word to every dictionary of word counts if not in it
                         self.addWordToDicts(placeInArr, word)
+
+                        # can delete once done
+                        if self.counter1 >= 2000000:
+                            self.counter1 = 0
+                            self.counter2 += 1
+                        self.counter1 += 1
+                        print(str(self.counter1) + "    " + str(self.counter2))
+
+                    self.addToCounts(placeInArr, word, speakerParty)  # adds count of words said to counts
 
         """ TODO: once resolving issue of politicians not being found in our database, can automatically call addBigrams
                 from here instead of returning speech to fileIterator and calling addBigrams from there. When doing
@@ -104,66 +135,148 @@ class WordCounter:
             word = word[:-1]  # gets rid of the space on the end of the bigram string
             if not hasNumbers(word):  # skips the bigram if it contains a number
                 if word not in self.stopWords:  # skips the bigram if it is in the stop words
-                    placeInArr = ord(word[0]) - ord('a')
+                    firstLetter = ord(word[0]) - ord('a')  # stores the position in the alphabet of the first letter
+
+                    # stores the position in the alphabet of the second letter
+                    if word[1] == " ":
+                        secLetter = ord(word[2]) - ord('a')
+                    else:
+                        secLetter = ord(word[1]) - ord('a')
+
+                    placeInArr = (firstLetter, secLetter)  # stores the first and second letters in the word
 
                     # adds the word to the dictionary containing a count of words with partisan association
-                    if word not in self.wordsWoStopWords[placeInArr]:
+                    if word not in self.wordsWoStopWords[firstLetter][secLetter]:
                         # adds word to every dictionary of word counts if not in it
                         self.addWordToDicts(placeInArr, word)
 
-                    #  adds count of words said to counts
-                    self.addToCounts(placeInArr, word, speakerParty)
+                        # can delete once working
+                        if self.counter1 >= 2000000:
+                            self.counter1 = 0
+                            self.counter2 += 1
+                        self.counter1 += 1
+                        print(str(self.counter1) + "    " + str(self.counter2))
+
+                    self.addToCounts(placeInArr, word, speakerParty)  # adds count of words said to counts
 
                     """if p percent of the time that a word occurs is within a bigram, we remove the individual word
                     from our word count dictionaries"""
                     for w in gram:
                         try:
-                            bigramMentions = self.nonpartisanWordCounts[placeInArr][word]
-                            singleWordMentions = self.nonpartisanWordCounts[placeInArr][w]
+                            bigramMentions = self.nonpartisanWordCounts[firstLetter][secLetter][word]
+                            singleWordMentions = self.nonpartisanWordCounts[firstLetter][secLetter][w]
                             frequencyOfWord = bigramMentions / singleWordMentions
                             if frequencyOfWord > removeWordThreshold:
-                                self.nonpartisanWordCounts[placeInArr].pop(w)
-                                self.wordsWoStopWords[placeInArr].pop(w)
-                                self.democratWordCounts[placeInArr].pop(w)
+                                self.nonpartisanWordCounts[firstLetter][secLetter].pop(w)
+                                self.wordsWoStopWords[firstLetter][secLetter].pop(w)
+                                self.democratWordCounts[firstLetter][secLetter].pop(w)
                         except:
                             pass
 
+    def calculateFrequencies(self, minimumOccs):
+        """
+        Calculates the frequencies in which phrases are said by either party
+
+        :param minimumOccs: The minimum number of times a word must occur in order for us to calculate its partisanship
+        :return: None
+        """
+
+        for firstLetter in range(len(self.nonpartisanWordCounts)):  # iterates through starting letters
+            for secLetter in range(len(self.nonpartisanWordCounts[firstLetter])):  # iterates through second letters
+                for word in self.nonpartisanWordCounts[firstLetter][secLetter]:  # iterates through all words
+
+                    # stores all times the word is said regardless of party
+                    totalMentions = self.nonpartisanWordCounts[firstLetter][secLetter][word]
+
+                    if totalMentions >= minimumOccs:  # makes sure word is said minimum number of times
+                        democratMentions = self.democratWordCounts[firstLetter][secLetter][word]  # stores dem mentions
+                        republicanMentions = totalMentions - democratMentions  # stores gop mentions
+                        self.democratFrequencies[firstLetter][secLetter][word] = democratMentions / totalMentions
+                        self.republicanFrequencies[firstLetter][secLetter][word] = republicanMentions / totalMentions
+
     def addWordToDicts(self, placeInArr, word):
-        for d in range(len(self.words)):
-            self.words[d][placeInArr][word] = 0
+        """
+        Adds a word or phrase to all of the word count arrays
+
+        :param placeInArr: tuple indicating where to store the word in the array. Tuple is (first letter, second letter)
+        :param word: phrase that is being added to array
+        :return: None
+        """
+
+        firstLetter = placeInArr[0]  # location in alphabet of starting letter
+        secLetter = placeInArr[1]  # locaiton in alphabet of second letter
+        for d in range(len(self.words)):  # iterates through all word count arrays
+            self.words[d][firstLetter][secLetter][word] = 0  # initializes word in the correct location
 
     def addToCounts(self, placeInArr, word, speakerParty):
+        """
+        Correctly updates the count of the word said in all word count arrays for each mention of a word
+
+        :param placeInArr: tuple indicating where to store the word in the array. Tuple is (first letter, second letter)
+        :param word: phrase that is being added to array
+        :param speakerParty: party of the person who said the word on this occurrence
+        :return:
+        """
+
+        firstLetter = placeInArr[0]
+        secLetter = placeInArr[1]
+
         # increases count of word in non-partisan word count dict
-        self.nonpartisanWordCounts[placeInArr][word] = self.nonpartisanWordCounts[placeInArr][word] + 1
+        self.nonpartisanWordCounts[firstLetter][secLetter][word] = \
+            self.nonpartisanWordCounts[firstLetter][secLetter][word] + 1
 
         # increases count if dem said word the word
         if speakerParty == "democrat":
-            self.wordsWoStopWords[placeInArr][word] = self.wordsWoStopWords[placeInArr][word] + 1
-            self.democratWordCounts[placeInArr][word] = self.democratWordCounts[placeInArr][word] + 1
+            self.wordsWoStopWords[firstLetter][secLetter][word] = \
+                self.wordsWoStopWords[firstLetter][secLetter][word] + 1
+
+            self.democratWordCounts[firstLetter][secLetter][word] = \
+                self.democratWordCounts[firstLetter][secLetter][word] + 1
 
         # decreases count if gop said word the word
         elif speakerParty == "republican":
-            self.wordsWoStopWords[placeInArr][word] = self.wordsWoStopWords[placeInArr][word] - 1
+            self.wordsWoStopWords[firstLetter][secLetter][word] = \
+                self.wordsWoStopWords[firstLetter][secLetter][word] - 1
 
-    def printTopFrequencies(self, wordCount, totalMentions, howMany, party):
+    def printTopFrequencies(self, howMany=1000, whichParty='gop'):
+        """
+        Prints the words that have the highest partisan lean
+
+        :param howMany: How many words to print
+        :param whichParty: The party whose highly partisan words are to be printed (either 'dem' or 'gop')
+        :return: None
+        """
+
         topWords = []  # heap of all of the words
 
-        wordCountLen = 0
+        # determines which wordCount to print
+        if whichParty.lower() == "dem":
+            wordCount = self.democratFrequencies
+        elif whichParty.lower() == "gop" or whichParty.lower() == "rep":
+            wordCount = self.republicanFrequencies
+        else:
+            raise Exception("Must specify party as either \"dem\" or \"gop\"")
 
-        for letter in range(len(wordCount)):
-            wordCountLen += len(wordCount[letter])
-            for w in wordCount[letter]:
-                topWords.append((-wordCount[letter][w], w, -totalMentions[letter][w]))
-                if len(topWords) > howMany:
-                    maxLoc = topWords.index(max(topWords))
-                    if maxLoc == len(topWords) - 1:
-                        topWords.pop()
-                    else:
-                        topWords[maxLoc] = topWords.pop()
+        wordCountLen = 0  # keeps track of how many words are being said
 
-        print(wordCountLen)
-        print(len(topWords))
-        # prints the words that have the greatest magnitude of difference between times parties said word
+        for firstLetter in range(len(wordCount)):  # iterates through starting letters
+            for secLetter in range(len(wordCount[firstLetter])):  # iterates through second letters
+                wordCountLen += len(wordCount[firstLetter][secLetter])  # maintains count of how many phrases are said
+                for w in wordCount[firstLetter][secLetter]:  # iterates through phrases said
+                    topWords.append((-wordCount[firstLetter][secLetter][w], w))  # adds the latest word to the heap
+
+                    # if the heap exceeds the number of words we want to return, then remove the lowest partisan word
+                    if len(topWords) > howMany:
+                        maxLoc = topWords.index(max(topWords))
+                        if maxLoc == len(topWords) - 1:
+                            topWords.pop()
+                        else:
+                            topWords[maxLoc] = topWords.pop()
+
+        print(wordCountLen)  # counts how many words total were considered
+        print(len(topWords))  # makes sure the heap never exceeded a size of howMany + 1
+
+        # prints the words that have the greatest partisan lean and writes them to a text file
         counter = 0
         stringToWrite = ""
         heapq.heapify(topWords)
@@ -174,11 +287,9 @@ class WordCounter:
                 clause[1]) + "\n")  # + "        " + str(clause[2]) + "\n")
             if clause[0] > .5 and " " in clause[1]:
                 print(clause[1])
-        f = open(party + "Frequencies.txt", "w")
+        f = open(whichParty + "ClassFrequencies.txt", "w")
         f.write(stringToWrite)
         f.close()
-
-
 
 
 def hasNumbers(inputString):
@@ -188,4 +299,3 @@ def hasNumbers(inputString):
     :return: Boolean: whether string contains a number
     """
     return any(char.isdigit() for char in inputString)
-
